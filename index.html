@@ -7,162 +7,186 @@
     THIS MY WORLD
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
 <style>
-    /* ---------- GLOBAL ---------- */
-    * {
-        box-sizing: border-box;
-        margin: 0;
-        padding: 0;
+    <style>
+* {
+    box-sizing: border-box;
+    margin: 0;
+    padding: 0;
+}
+
+body {
+    min-height: 100vh;
+    font-family: "Poppins", "Segoe UI", sans-serif;
+    color: white;
+    padding: 50px 20px;
+
+    background:
+        linear-gradient(135deg, #0f0c29, #302b63, #24243e);
+}
+
+/* Main container */
+body > div {
+    max-width: 950px;
+    margin: auto;
+    padding: 40px;
+
+    background: rgba(255, 255, 255, 0.08);
+    border: 1px solid rgba(255, 255, 255, 0.15);
+    border-radius: 30px;
+
+    backdrop-filter: blur(20px);
+    -webkit-backdrop-filter: blur(20px);
+
+    box-shadow: 0 30px 80px rgba(0, 0, 0, 0.5);
+}
+
+/* Heading */
+h1 {
+    background: none !important;
+    color: white !important;
+
+    text-align: center;
+    font-size: 45px;
+    font-weight: 800;
+
+    padding: 25px;
+    margin-bottom: 40px;
+
+    letter-spacing: 2px;
+
+    text-shadow:
+        0 0 10px rgba(255,255,255,0.4),
+        0 0 30px rgba(140,100,255,0.7);
+}
+
+/* Song information */
+p {
+    margin: 35px 0 15px;
+    padding: 20px 25px;
+
+    font-size: 20px;
+    font-weight: 600;
+
+    background: rgba(255,255,255,0.07);
+    border-radius: 18px;
+
+    border-left: 5px solid #a855f7;
+
+    transition: all 0.3s ease;
+}
+
+p:hover {
+    transform: translateX(8px);
+
+    background: rgba(255,255,255,0.12);
+
+    box-shadow:
+        0 10px 30px rgba(0,0,0,0.25),
+        0 0 20px rgba(168,85,247,0.2);
+}
+
+/* Spotify links */
+a {
+    display: inline-block;
+
+    margin-top: 10px;
+
+    color: #c084fc;
+    text-decoration: none;
+
+    font-size: 16px;
+    font-weight: 700;
+
+    transition: all 0.3s ease;
+}
+
+a:hover {
+    color: #ffffff;
+
+    transform: scale(1.05);
+
+    text-shadow:
+        0 0 8px #c084fc,
+        0 0 20px #a855f7;
+}
+
+/* Album images */
+img {
+    display: block;
+
+    width: 280px;
+    height: 280px;
+
+    object-fit: cover;
+
+    margin: 20px auto 45px;
+
+    border-radius: 25px;
+
+    border: 2px solid rgba(255,255,255,0.2);
+
+    box-shadow:
+        0 20px 50px rgba(0,0,0,0.5),
+        0 0 25px rgba(168,85,247,0.2);
+
+    transition:
+        transform 0.4s ease,
+        box-shadow 0.4s ease;
+}
+
+img:hover {
+    transform: scale(1.07) rotate(1deg);
+
+    box-shadow:
+        0 30px 70px rgba(0,0,0,0.6),
+        0 0 45px rgba(168,85,247,0.5);
+}
+
+/* Smooth appearance */
+body > div {
+    animation: appear 1s ease;
+}
+
+@keyframes appear {
+    from {
+        opacity: 0;
+        transform: translateY(30px);
     }
 
-    html {
-        scroll-behavior: smooth;
+    to {
+        opacity: 1;
+        transform: translateY(0);
     }
+}
+
+/* Mobile */
+@media (max-width: 600px) {
 
     body {
-        min-height: 100vh;
-        font-family: "Segoe UI", Arial, sans-serif;
-        color: #f5f5f5;
-        background:
-            radial-gradient(circle at top left, #1b4d4a 0%, transparent 35%),
-            radial-gradient(circle at bottom right, #4b164c 0%, transparent 35%),
-            #08090d;
-        padding: 40px 20px;
+        padding: 20px 10px;
     }
 
-    /* ---------- MAIN CONTAINER ---------- */
     body > div {
-        max-width: 1000px;
-        margin: auto;
-        padding: 35px !important;
-        background: rgba(20, 20, 28, 0.75) !important;
-        border: 1px solid rgba(255, 255, 255, 0.1);
-        border-radius: 25px;
-        box-shadow:
-            0 25px 80px rgba(0, 0, 0, 0.55),
-            inset 0 1px rgba(255, 255, 255, 0.08);
-        backdrop-filter: blur(15px);
+        padding: 20px;
+        border-radius: 20px;
     }
 
-    /* ---------- TITLE ---------- */
     h1 {
-        background: linear-gradient(135deg, #00f5a0, #00d9f5) !important;
-        color: #06110e !important;
-        text-align: center;
-        font-size: clamp(28px, 5vw, 48px);
-        padding: 22px;
-        margin-bottom: 35px;
-        border-radius: 18px;
-        letter-spacing: 1px;
-        box-shadow: 0 10px 35px rgba(0, 245, 160, 0.2);
+        font-size: 30px;
     }
 
-    /* ---------- SONG TEXT ---------- */
     p {
-        margin: 25px 0 10px;
-        padding: 16px 20px;
-        border-left: 4px solid #00f5a0;
-        border-radius: 10px;
-        background: rgba(255, 255, 255, 0.05);
-        font-size: 18px;
-        line-height: 1.6;
-        transition: 0.3s ease;
+        font-size: 17px;
+        padding: 16px;
     }
 
-    p:hover {
-        background: rgba(255, 255, 255, 0.09);
-        transform: translateX(5px);
-    }
-
-    /* ---------- LINKS ---------- */
-    a {
-        display: inline-block;
-        color: #00f5a0;
-        font-weight: 700;
-        text-decoration: none;
-        transition: 0.25s ease;
-    }
-
-    a:hover {
-        color: #00d9f5;
-        text-shadow: 0 0 12px rgba(0, 245, 160, 0.6);
-        transform: translateY(-2px);
-    }
-
-    /* ---------- ALBUM IMAGES ---------- */
     img {
-        display: block;
-        width: 260px;
-        height: 260px;
-        object-fit: cover;
-        margin: 15px auto 35px;
-        border-radius: 22px;
-        border: 2px solid rgba(255, 255, 255, 0.12);
-
-        box-shadow:
-            0 15px 40px rgba(0, 0, 0, 0.6),
-            0 0 30px rgba(0, 245, 160, 0.08);
-
-        transition:
-            transform 0.35s ease,
-            box-shadow 0.35s ease;
+        width: 220px;
+        height: 220px;
     }
+}
 
-    img:hover {
-        transform: scale(1.05) translateY(-5px);
-        box-shadow:
-            0 25px 55px rgba(0, 0, 0, 0.7),
-            0 0 35px rgba(0, 245, 160, 0.25);
-    }
-
-    /* ---------- NUMBERED SONG SECTIONS ---------- */
-    p:has(+ p img) {
-        margin-top: 30px;
-    }
-
-    /* ---------- MOBILE ---------- */
-    @media (max-width: 600px) {
-
-        body {
-            padding: 15px;
-        }
-
-        body > div {
-            padding: 20px !important;
-            border-radius: 18px;
-        }
-
-        h1 {
-            font-size: 28px;
-            padding: 18px 10px;
-        }
-
-        p {
-            font-size: 16px;
-            padding: 13px;
-        }
-
-        img {
-            width: 200px;
-            height: 200px;
-        }
-    }
-
-    /* ---------- ANIMATION ---------- */
-    @keyframes fadeUp {
-        from {
-            opacity: 0;
-            transform: translateY(20px);
-        }
-
-        to {
-            opacity: 1;
-            transform: translateY(0);
-        }
-    }
-
-    body > div {
-        animation: fadeUp 0.8s ease forwards;
-    }
+    
 </style>
 </head>
 <div style="background-color:black;color:white;padding:20px;">
