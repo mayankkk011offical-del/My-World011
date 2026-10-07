@@ -1,0 +1,817 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+
+    <title>My World</title>
+
+    <style>
+
+        * {
+            box-sizing: border-box;
+            margin: 0;
+            padding: 0;
+        }
+
+        html {
+            scroll-behavior: smooth;
+        }
+
+        body {
+            min-height: 100vh;
+
+            font-family: "Poppins", "Segoe UI", Arial, sans-serif;
+
+            color: white;
+
+            padding: 40px 20px;
+
+            /* DARK GREEN AESTHETIC BACKGROUND */
+            background:
+                radial-gradient(
+                    circle at 10% 10%,
+                    rgba(0, 255, 120, 0.16),
+                    transparent 30%
+                ),
+                radial-gradient(
+                    circle at 90% 20%,
+                    rgba(0, 180, 90, 0.13),
+                    transparent 30%
+                ),
+                radial-gradient(
+                    circle at 50% 100%,
+                    rgba(0, 255, 150, 0.12),
+                    transparent 35%
+                ),
+                linear-gradient(
+                    135deg,
+                    #020b06,
+                    #061a0f,
+                    #03140b,
+                    #020806
+                );
+
+            background-attachment: fixed;
+
+            overflow-x: hidden;
+        }
+
+
+        /* MAIN CONTAINER */
+
+        body > div {
+
+            width: 100%;
+            max-width: 1000px;
+
+            margin: auto;
+
+            padding: 40px;
+
+            background:
+                rgba(7, 30, 18, 0.78);
+
+            border:
+                1px solid rgba(0, 255, 120, 0.18);
+
+            border-radius: 30px;
+
+            backdrop-filter: blur(20px);
+            -webkit-backdrop-filter: blur(20px);
+
+            box-shadow:
+
+                0 30px 90px
+                rgba(0, 0, 0, 0.65),
+
+                0 0 50px
+                rgba(0, 255, 120, 0.05),
+
+                inset 0 1px
+                rgba(255, 255, 255, 0.05);
+
+            animation: appear 1s ease;
+        }
+
+
+        /* HEADINGS */
+
+        h1 {
+
+            background: transparent !important;
+
+            color: white !important;
+
+            text-align: center;
+
+            font-size: clamp(30px, 5vw, 48px);
+
+            font-weight: 800;
+
+            letter-spacing: 1px;
+
+            padding: 25px 10px;
+
+            margin: 20px 0 35px;
+
+            position: relative;
+
+            text-shadow:
+
+                0 0 10px
+                rgba(0, 255, 120, 0.35),
+
+                0 0 30px
+                rgba(0, 255, 120, 0.15);
+        }
+
+
+        /* GREEN LINE UNDER HEADING */
+
+        h1::after {
+
+            content: "";
+
+            display: block;
+
+            width: 90px;
+
+            height: 4px;
+
+            margin: 15px auto 0;
+
+            border-radius: 10px;
+
+            background:
+                linear-gradient(
+                    90deg,
+                    #00ff73,
+                    #00c853,
+                    #69f0ae
+                );
+
+            box-shadow:
+                0 0 15px
+                rgba(0, 255, 115, 0.6);
+        }
+
+
+        /* PARAGRAPH / SONG / GAME / VEHICLE TEXT */
+
+        p {
+
+            margin: 28px 0 12px;
+
+            padding: 18px 22px;
+
+            font-size: 18px;
+
+            font-weight: 600;
+
+            line-height: 1.6;
+
+            background:
+                rgba(255, 255, 255, 0.045);
+
+            border:
+                1px solid
+                rgba(0, 255, 120, 0.08);
+
+            border-left:
+                4px solid #00d95f;
+
+            border-radius: 15px;
+
+            transition:
+                0.3s ease;
+        }
+
+
+        p:hover {
+
+            transform:
+                translateX(6px);
+
+            background:
+                rgba(0, 255, 120, 0.07);
+
+            border-color:
+                rgba(0, 255, 120, 0.18);
+
+            box-shadow:
+
+                0 10px 30px
+                rgba(0, 0, 0, 0.3),
+
+                0 0 20px
+                rgba(0, 255, 120, 0.08);
+        }
+
+
+        /* LINKS */
+
+        a {
+
+            display: inline-block;
+
+            margin-top: 5px;
+
+            color: #69f0ae;
+
+            font-size: 16px;
+
+            font-weight: 700;
+
+            text-decoration: none;
+
+            transition:
+                0.3s ease;
+        }
+
+
+        a:hover {
+
+            color: #b9ffd5;
+
+            transform:
+                translateY(-2px);
+
+            text-shadow:
+
+                0 0 8px
+                rgba(0, 255, 120, 0.8),
+
+                0 0 20px
+                rgba(0, 255, 120, 0.4);
+        }
+
+
+        /* IMAGES */
+
+        img {
+
+            display: block;
+
+            width: 280px;
+
+            height: 280px;
+
+            max-width: 100%;
+
+            object-fit: cover;
+
+            margin: 18px auto 40px;
+
+            border-radius: 24px;
+
+            border:
+                2px solid
+                rgba(0, 255, 120, 0.15);
+
+            box-shadow:
+
+                0 20px 50px
+                rgba(0, 0, 0, 0.6),
+
+                0 0 25px
+                rgba(0, 255, 120, 0.08);
+
+            transition:
+                transform 0.4s ease,
+                box-shadow 0.4s ease;
+        }
+
+
+        img:hover {
+
+            transform:
+                scale(1.05)
+                translateY(-6px);
+
+            border-color:
+                rgba(0, 255, 120, 0.35);
+
+            box-shadow:
+
+                0 30px 70px
+                rgba(0, 0, 0, 0.7),
+
+                0 0 40px
+                rgba(0, 255, 120, 0.25);
+        }
+
+
+        /* YOUTUBE VIDEOS */
+
+        iframe {
+
+            display: block;
+
+            width: 450px;
+
+            max-width: 100%;
+
+            aspect-ratio: 16 / 9;
+
+            height: auto;
+
+            margin: 20px auto 40px;
+
+            border: none;
+
+            border-radius: 20px;
+
+            box-shadow:
+
+                0 20px 50px
+                rgba(0, 0, 0, 0.65),
+
+                0 0 25px
+                rgba(0, 255, 120, 0.08);
+
+            transition:
+                transform 0.3s ease,
+                box-shadow 0.3s ease;
+        }
+
+
+        iframe:hover {
+
+            transform:
+                scale(1.02);
+
+            box-shadow:
+
+                0 25px 60px
+                rgba(0, 0, 0, 0.7),
+
+                0 0 35px
+                rgba(0, 255, 120, 0.18);
+        }
+
+
+        /* ANIMATION */
+
+        @keyframes appear {
+
+            from {
+
+                opacity: 0;
+
+                transform:
+                    translateY(30px);
+            }
+
+            to {
+
+                opacity: 1;
+
+                transform:
+                    translateY(0);
+            }
+        }
+
+
+        /* TEXT SELECTION */
+
+        ::selection {
+
+            background:
+                #00c853;
+
+            color:
+                white;
+        }
+
+
+        /* MOBILE */
+
+        @media (max-width: 600px) {
+
+            body {
+
+                padding:
+                    15px 10px;
+            }
+
+
+            body > div {
+
+                padding:
+                    20px 15px;
+
+                border-radius:
+                    22px;
+            }
+
+
+            h1 {
+
+                font-size:
+                    28px;
+
+                padding:
+                    20px 5px;
+
+                margin-bottom:
+                    25px;
+            }
+
+
+            p {
+
+                font-size:
+                    16px;
+
+                padding:
+                    15px 16px;
+            }
+
+
+            img {
+
+                width:
+                    220px;
+
+                height:
+                    220px;
+
+                border-radius:
+                    20px;
+            }
+
+
+            iframe {
+
+                width:
+                    100%;
+
+                border-radius:
+                    15px;
+            }
+        }
+
+    </style>
+
+</head>
+
+
+<body>
+
+<div>
+
+
+    <!-- ================= SONGS ================= -->
+
+    <h1>My Top 5 Favorite Songs</h1>
+
+
+    <p>
+
+        1. Kalyani By Shreya Ghoshal -
+
+        <a
+            href="https://open.spotify.com/track/2y8mkajKikV5S1PRCMQ5WL?si=0c0a0eecd42343ff"
+            target="_blank"
+        >
+            Kalyani
+        </a>
+
+    </p>
+
+
+    <iframe
+        src="https://www.youtube.com/embed/z5y8Clp_TdE?si=cgiUzsy5y4TltiSX"
+        title="Kalyani - YouTube video"
+        allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture; web-share"
+        referrerpolicy="strict-origin-when-cross-origin"
+        allowfullscreen
+    ></iframe>
+
+
+    <p>
+
+        2. Udaarian By Satinder Sartaaj -
+
+        <a
+            href="https://open.spotify.com/track/3K3mo4LoxPKk18oqIC3hQC?si=be6f12f42e3f4571"
+            target="_blank"
+        >
+            Udaarian
+        </a>
+
+    </p>
+
+
+    <iframe
+        src="https://www.youtube.com/embed/9udS0mpi1L4?si=o1WgJFUJsg8mNt2n"
+        title="Udaarian - YouTube video"
+        allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture; web-share"
+        referrerpolicy="strict-origin-when-cross-origin"
+        allowfullscreen
+    ></iframe>
+
+
+    <p>
+
+        3. Maula Mere Maula By Roop Kumar Rathore -
+
+        <a
+            href="https://open.spotify.com/track/4CGBTtlrjZj7ydpV52cgB4?si=b9382fc6e4a64e61"
+            target="_blank"
+        >
+            Maula Mere Maula
+        </a>
+
+    </p>
+
+
+    <iframe
+        src="https://www.youtube.com/embed/l5sgIqzlPXc?si=1KWBm3-pdLqdteYm"
+        title="Maula Mere Maula - YouTube video"
+        allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture; web-share"
+        referrerpolicy="strict-origin-when-cross-origin"
+        allowfullscreen
+    ></iframe>
+
+
+    <p>
+
+        4. Mann Mera By Gajendra Verma -
+
+        <a
+            href="https://open.spotify.com/track/0mwAlZqPUWpZJIut93y40W?si=ad11b2784452420e"
+            target="_blank"
+        >
+            Mann Mera
+        </a>
+
+    </p>
+
+
+    <iframe
+        src="https://www.youtube.com/embed/HP2zqQsrsyg?si=pY8ysF5gPOhphssG"
+        title="Mann Mera - YouTube video"
+        allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture; web-share"
+        referrerpolicy="strict-origin-when-cross-origin"
+        allowfullscreen
+    ></iframe>
+
+
+    <p>
+
+        5. Barsaat -
+
+        <a
+            href="https://open.spotify.com/track/2iUPgbjfgsnqzaFBgtuXfx?si=2ef0748dd9c04527"
+            target="_blank"
+        >
+            Barsaat
+        </a>
+
+    </p>
+
+
+    <iframe
+        src="https://www.youtube.com/embed/ebZj_nrmH-c?si=Vlv8oVc4-0JdqlPj"
+        title="Barsaat - YouTube video"
+        allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture; web-share"
+        referrerpolicy="strict-origin-when-cross-origin"
+        allowfullscreen
+    ></iframe>
+
+
+
+    <!-- ================= GAMES ================= -->
+
+    <h1>My Top 5 Favorite Games</h1>
+
+
+    <p>
+
+        1. Free Fire Max
+
+        <a
+            href="https://play.google.com/store/apps/details?id=com.dts.freefiremax&pcampaignid=web_share"
+            target="_blank"
+        >
+            Free Fire Max
+        </a>
+
+    </p>
+
+
+    <img
+        src="https://encrypted-tbn3.gstatic.com/images?q=tbn:ANd9GcRSnt02WbCyXoYamu0wImvQEUpO0Kk2GsVJ0Fo42HjB6o-kecty"
+        alt="Free Fire Max"
+    >
+
+
+    <p>
+
+        2. Shadow Fight 2
+
+        <a
+            href="https://play.google.com/store/apps/details?id=com.nekki.shadowfight&pcampaignid=web_share"
+            target="_blank"
+        >
+            Shadow Fight 2
+        </a>
+
+    </p>
+
+
+    <img
+        src="https://encrypted-tbn2.gstatic.com/images?q=tbn:ANd9GcThowQ35X3dy86M63c7fAaBDAgM8sq_9v7xrgG9aKGwYCsgMTOOtBtWMTnvDO2M"
+        alt="Shadow Fight 2"
+    >
+
+
+    <p>
+
+        3. Hungry Shark
+
+        <a
+            href="https://play.google.com/store/apps/details?id=com.fgol.HungrySharkEvolution&pcampaignid=web_share"
+            target="_blank"
+        >
+            Hungry Shark
+        </a>
+
+    </p>
+
+
+    <img
+        src="https://play-lh.googleusercontent.com/TuZfflVLR77RhChmQguIsTfQ5nJ_2vWr4MNk9gE5Te6JEd2UluZKlpF2iN21qQcmGLfDgrqEUv53sxjonhIY7Q=s96-rw"
+        alt="Hungry Shark"
+    >
+
+
+    <p>
+
+        4. Mini Militia
+
+        <a
+            href="https://play.google.com/store/apps/details?id=com.appsomniacs.da2&pcampaignid=web_share"
+            target="_blank"
+        >
+            Mini Militia
+        </a>
+
+    </p>
+
+
+    <img
+        src="https://play-lh.googleusercontent.com/7GwIR_oV_lJ8v2qfLypqLwAPn3oZKHi02QRkEIlQailu2LUSu7EHvhXJEyHLQqzHWK62UJq7u1LG_3xRQHwNtqw=s96-rw"
+        alt="Mini Militia"
+    >
+
+
+    <p>
+
+        5. Robbery Bob & Robbery Bob 2
+
+        <a
+            href="https://play.google.com/store/apps/details?id=com.chillingo.robberybobfree.android.row&pcampaignid=web_share"
+            target="_blank"
+        >
+            Robbery Bob
+        </a>
+
+        &
+
+        <a
+            href="https://play.google.com/store/apps/details?id=com.chillingo.robberybob2.android.gplay&pcampaignid=web_share"
+            target="_blank"
+        >
+            Robbery Bob 2
+        </a>
+
+    </p>
+
+
+    <img
+        src="https://play-lh.googleusercontent.com/RWh_Eu5rOpWw6IKWjYZsTEeH4axSEEsEm-RnFosbiccSuYh64NtVxbvY76O94dI6TN6feYPCyDkB0-1I5G-jMw=s96-rw"
+        alt="Robbery Bob"
+    >
+
+    <img
+        src="https://play-lh.googleusercontent.com/vAkIJpZyd690dSac5Sn2dZAzDmwstz1x6ll0Y1C6tq8Al25Rxqzi8a2ulEIyDyTmvMZ2cEyXvmJfVYYmzK6dYJc=s96-rw"
+        alt="Robbery Bob 2"
+    >
+
+
+
+    <!-- ================= VEHICLES ================= -->
+
+    <h1>My Top 5 Favorite Vehicles</h1>
+
+
+    <p>
+
+        1. BMW (Bayerische Motoren Werke) M4 Car -
+
+        <a
+            href="https://youtu.be/YFNSDdrElfc?si=c-MVR7E4N20pmLMI"
+            target="_blank"
+        >
+            BMW M4
+        </a>
+
+    </p>
+
+
+    <img
+        src="https://encrypted-tbn2.gstatic.com/images?q=tbn:ANd9GcQugZPeJb4uuj8wXGmNoW5f34TO9Gcbsd8qAxeMrlmFQUg7AvExYKwGqL9BwpOh"
+        alt="BMW M4"
+    >
+
+
+    <p>
+
+        2. Mahendra Scorpio Classic S11 -
+
+        <a
+            href="https://youtube.com/shorts/JRE94lbDr6w?si=FP6Tp9YDMMbW6Fql"
+            target="_blank"
+        >
+            Scorpio Classic S11
+        </a>
+
+    </p>
+
+
+    <img
+        src="https://encrypted-tbn1.gstatic.com/images?q=tbn:ANd9GcRz93o0qXi0r1-CelA9wlkdDMluoEqHbaLn3SjLHx7poOUazn1UCrPCV-GefR1N"
+        alt="Mahendra Scorpio"
+    >
+
+
+    <p>
+
+        3. BMW S1000RR Bike -
+
+        <a
+            href="https://youtube.com/shorts/MXMCMocg0Sc?si=WzDtCbz_41wvoUjc"
+            target="_blank"
+        >
+            BMW S1000RR
+        </a>
+
+    </p>
+
+
+    <img
+        src="https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcR9woY4oFiMJDbH_cRSl_ofIJcG3ojmvU-FOu8zYKIdRbDkLxKiO7jnUy7s&s=10"
+        alt="BMW S1000RR"
+    >
+
+
+    <p>
+
+        4. Royal Enfield GT650 Bike -
+
+        <a
+            href="https://youtube.com/shorts/S1Cq5f5bGI0?si=hdx_qXk8oJds5cHR"
+            target="_blank"
+        >
+            GT650
+        </a>
+
+    </p>
+
+
+    <img
+        src="https://cdn-s3.autocarindia.com/RoyalEnfield/Continental-GT-650/_AAB9339.JPG?w=640&q=75&fm=auto"
+        alt="Royal Enfield GT650"
+    >
+
+
+    <p>
+
+        5. Yamaha MT15 Black Bike -
+
+        <a
+            href="https://youtube.com/shorts/f-nG8AXrw2Q?si=mAc2NMIT6d94j1RM"
+            target="_blank"
+        >
+            MT 15 Black
+        </a>
+
+    </p>
+
+
+    <img
+        src="https://encrypted-tbn1.gstatic.com/images?q=tbn:ANd9GcQAiDdNdRsc20nPoXvkCeZ73TVKZp9lQoCLiZZNXeL3KikcdAbkKyi45FXgpU7j"
+        alt="Yamaha MT15 Black"
+    >
+
+
+</div>
+
+</body>
+
+</html>
